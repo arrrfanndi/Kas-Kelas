@@ -1,26 +1,20 @@
 <?php
-// backend/hapus_kas.php
-require_once '../config/koneksi.php';
+// backend/logout.php
 require_once '../config/autentikasi.php';
 
-proteksi_halaman();
-cek_akses_bendahara(); // Poin 1: Hanya bendahara yang diizinkan menghapus record data
+// Poin 1: Menghancurkan seluruh data session yang tersimpan di server
+$_SESSION = array();
 
-if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    $id = $_GET['id'];
-
-    try {
-        // Poin 3: Prepared Statement mengunci manipulasi parameter query string di URL (?id=...)
-        $stmt = $pdo->prepare("DELETE FROM kas_transaksi WHERE id = :id");
-        $stmt->execute(['id' => $id]);
-
-        header("Location: ../dashboard.php?status=sukses_hapus");
-        exit;
-    } catch (PDOException $e) {
-        die("Gagal menghapus data transaksi: " . $e->getMessage());
-    }
-} else {
-    echo "<script>alert('ID Transaksi tidak dikenali.'); window.location.href = '../dashboard.php';</script>";
-    exit;
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"], $params["secure"], $params["httponly"]
+    );
 }
+
+session_destroy();
+
+// Redirect kembali ke gerbang login luar
+header("Location: ../login.php");
+exit;
 ?>
