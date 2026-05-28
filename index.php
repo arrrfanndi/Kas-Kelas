@@ -1,7 +1,7 @@
 <?php
 // index.php
-session_start();
 require_once 'config/koneksi.php';
+require_once 'config/autentikasi.php'; // Memanggil session terpusat
 
 $sudah_login = isset($_SESSION['user_id']);
 $saldo_akhir = 0;
@@ -25,20 +25,17 @@ if ($sudah_login) {
         $saldo_akhir = 0;
     }
 }
-
-function aman($string) {
-    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-}
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Sistem Kas Kelas</title>
+    <title>Sistem Informasi Kas Kelas</title>
 </head>
 <body>
 
-    <h1>Sistem Kas Kelas</h1>
+    <h1>Sistem Informasi Kas Kelas</h1>
+    <p>Selamat datang di aplikasi pencatatan keuangan kelas terintegrasi.</p>
     <hr>
 
     <?php if (!$sudah_login): ?>
