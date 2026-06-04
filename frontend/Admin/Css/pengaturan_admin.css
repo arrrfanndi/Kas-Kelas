@@ -1,0 +1,695 @@
+/* ==========================================================================
+   pengaturan_tagihan.css
+   Pusat Desain Konfigurasi Master Periode & Tagihan Minggu - Kasqeu
+   ========================================================================== */
+
+/* --- 1. SETELAN UTAMA CANVAS INTERFACE --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7F6F5;
+    color: #1e1c10;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 90px auto 0 auto;
+    padding: 0 24px 48px 24px;
+}
+
+.text-muted { color: #6c757d; }
+.text-dark { color: #111827; }
+.text-blue { color: #EDD200; }
+.text-center { text-align: center !important; }
+.text-right-align { text-align: right !important; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.text-gold-color { color: #5B5000; }
+
+/* --- 2. HEADER SPLIT VIEW + STATS METRIC CARD --- */
+.content-header-split {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    gap: 24px;
+}
+
+.header-title-box h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.header-title-box p {
+    font-size: 15px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* Kotak Kecil Informasi Total Minggu */
+.metric-summary-box {
+    background-color: #ffffff;
+    border: 1px solid #f3f4f6;
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    text-align: center;
+    min-width: 100px;
+}
+
+.metric-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.metric-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #5B5000;
+    margin-top: 2px;
+}
+
+/* --- 3. ARCHITECTURE GRID SYSTEM LAYOUT (BENTO BOX) --- */
+.input-grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+    align-items: start;
+}
+
+.form-aside-layout {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.table-layout-span {
+    grid-column: span 8;
+}
+
+/* --- 4. FORM CARD STRUCTURAL DESIGN --- */
+.form-card-main {
+    background-color: #ffffff;
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.form-card-title-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.form-card-title-box h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.form-card-title-box .material-symbols-outlined {
+    font-size: 24px !important;
+}
+
+.space-y-form > .form-group + .form-group,
+.space-y-form > .form-row-twin + .form-group,
+.space-y-form > .form-group + .form-action-btn-box {
+    margin-top: 20px;
+}
+
+.form-row-twin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.form-control {
+    width: 100%;
+    background-color: #f9fafb;
+    border: 1px solid #f3f4f6;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #EDD200;
+    box-shadow: 0 0 0 1px #EDD200;
+    background-color: #ffffff;
+}
+
+.form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    appearance: none;
+}
+
+.form-date-input {
+    cursor: pointer;
+}
+
+/* Prefix Element Input (Rp) */
+.input-icon-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-prefix {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.form-input-with-prefix {
+    padding-left: 42px;
+}
+
+.form-helper-text {
+    font-size: 10px;
+    color: #9ca3af;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* Submit Action Button Configuration */
+.btn-submit-primary {
+    width: 100%;
+    background-color: #EDD200;
+    color: #5B5000;
+    border: none;
+    padding: 14px 0;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+    transition: all 0.2s;
+}
+
+.btn-submit-primary:hover { background-color: #e2c800; }
+.btn-submit-primary:active { transform: scale(0.99); }
+.btn-submit-primary .material-symbols-outlined { font-size: 20px !important; }
+
+/* Panduan Infobox Alert Panel */
+.info-alert-card {
+    background-color: #fefce8;
+    border: 1px solid #fef08a;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.info-alert-text h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #5B5000;
+    margin: 0;
+}
+
+.info-alert-text p {
+    font-size: 12px;
+    color: #713f12;
+    line-height: 1.6;
+    margin-top: 4px;
+}
+
+/* --- 5. TABLE ENGINE COMPONENT DAFTAR MINGGU AKTIF --- */
+.table-section {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.table-header-panel {
+    padding: 24px;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.table-title-counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.table-title-counter h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.table-title-counter .material-symbols-outlined {
+    font-size: 24px !important;
+}
+
+/* Search Wrapper inside Table Panel Header */
+.search-wrapper {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 18px !important;
+}
+
+.search-input {
+    background-color: #f9fafb;
+    border: 1px solid #f3f4f6;
+    border-radius: 9999px;
+    padding: 8px 16px 8px 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #111827;
+    outline: none;
+    width: 256px;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: #EDD200;
+    background-color: #ffffff;
+}
+
+/* Table Architecture Blueprint Styles */
+.data-table-admin {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.data-table-admin th {
+    background-color: #f9fafb;
+    color: #9ca3af;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.data-table-admin td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+}
+
+.data-table-admin tbody tr:hover {
+    background-color: rgba(249, 250, 251, 0.6);
+}
+
+.row-zebra {
+    background-color: rgba(247, 246, 245, 0.25);
+}
+
+/* Lencana Status Minggu (Aktif / Selesai) */
+.badge-row {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-row-success { background-color: #f0fdf4; color: #198754; border: 1px solid #dcfce7; }
+.badge-row-neutral { background-color: #f9fafb; color: #9ca3af; border: 1px solid #e5e7eb; }
+
+/* Fleksibilitas Tombol CRUD Baris */
+.action-buttons-flex-end {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.btn-table-action {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 8px;
+    color: #9ca3af;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-edit:hover   { color: #5B5000; background-color: rgba(237, 210, 0, 0.1); }
+.btn-delete:hover { color: #FF5656; background-color: rgba(255, 86, 86, 0.1); }
+.btn-table-action .material-symbols-outlined { font-size: 18px !important; }
+
+/* --- 6. PAGINATION INTERACTION CONTROL --- */
+.table-footer-panel {
+    padding: 16px 24px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-zebra-bg {
+    background-color: rgba(249, 250, 251, 0.5);
+}
+
+.text-counter {
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.pagination-wrapper {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-page-nav {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-page-nav:hover:not(.disabled-nav) {
+    background-color: #ffffff;
+    color: #EDD200;
+    border-color: #EDD200;
+}
+
+.disabled-nav {
+    color: #ced4da !important;
+    background-color: #f9fafb !important;
+    cursor: not-allowed;
+    border-color: #e5e7eb !important;
+}
+
+.active-page {
+    background-color: #EDD200 !important;
+    border-color: #EDD200 !important;
+    color: #5B5000 !important;
+    box-shadow: 0 2px 4px rgba(237, 210, 0, 0.15);
+}
+
+.btn-page-nav .material-symbols-outlined { font-size: 18px !important; }
+
+/* --- 7. NOTIFICATION TOAST ANCHOR VIEW --- */
+.toast-notification {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: #111827;
+    color: #ffffff;
+    padding: 16px 24px;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 200;
+    transform: translateY(150px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toast-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.toast-notification .material-symbols-outlined {
+    color: #EDD200;
+    font-size: 20px !important;
+}
+
+.toast-text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+/* --- 9. UTILITY CLASSES (PENGGANTI TAILWIND) --- */
+.hidden   { display: none !important; }
+.opacity-0 { opacity: 0; }
+.scale-95  { transform: scale(0.95); }
+.scale-100 { transform: scale(1); }
+
+/* --- 10. MODAL OVERLAY & CONTAINER --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;                              /* top/right/bottom/left: 0 */
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    transition: opacity 0.3s ease;        /* animasi fade in/out */
+}
+
+.modal-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+/* --- 11. MODAL INNER COMPONENTS --- */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background-color: #EDD200;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.btn-close-modal {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-close-modal:hover {
+    color: #FF5656;
+    background-color: #fff5f5;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.space-y-modal-form > * + * {
+    margin-top: 18px;
+}
+
+.form-group-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.modal-control {
+    width: 100%;
+    background-color: #f9fafb;
+    border: 1px solid #f3f4f6;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.modal-control:focus {
+    border-color: #EDD200;
+    box-shadow: 0 0 0 1px #EDD200;
+    background-color: #ffffff;
+}
+
+.modal-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+}
+
+.modal-input-icon-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.modal-input-prefix {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.modal-input-with-prefix {
+    padding-left: 42px;
+}
+
+.modal-action-box {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.btn-modal-cancel {
+    background-color: #f3f4f6;
+    border: none;
+    color: #6b7280;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-modal-cancel:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-modal-submit {
+    background-color: #EDD200;
+    border: none;
+    color: #5B5000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-modal-submit:hover {
+    background-color: #e2c800;
+}
+
+
+/* --- 8. SMARTPHONE MEDIA SCREEN ADAPTATION --- */
+@media (max-width: 1024px) {
+    .form-aside-layout { grid-column: span 12; }
+    .table-layout-span { grid-column: span 12; }
+}
+
+@media (max-width: 640px) {
+    .content-header-split {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .metric-summary-box {
+        width: 100%;
+    }
+    .table-header-panel {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search-input {
+        width: 100%;
+    }
+}

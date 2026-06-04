@@ -1,0 +1,330 @@
+/* ==========================================================================
+   siswa_admin.css
+   Pusat Kendali Gaya Arsitektur Panel Manajemen Data Siswa - Kasqeu
+   ========================================================================== */
+
+/* --- 1. CORE CANVAS & POSITIONING RESET --- */
+.main-content {
+    max-width: 1200px;
+    margin: 90px auto 0 auto;
+    padding: 0 24px 48px 24px;
+}
+
+.text-muted { color: #6c757d; }
+.text-center { text-align: center !important; }
+.font-semibold { font-weight: 600; }
+.text-dark { color: #111827; }
+
+/* --- 2. HEADER INTERACTION SPLIT COMPONENT --- */
+.content-header-split {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    gap: 24px;
+}
+
+.header-title-box h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.header-title-box p {
+    font-size: 15px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* Tombol Utama Tambah Siswa */
+.btn-add-student-primary {
+    background-color: #EDD200;
+    color: #5B5000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px -1px rgba(237, 210, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-add-student-primary:hover {
+    background-color: #e2c800;
+    transform: translateY(-1px);
+}
+
+.btn-add-student-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-add-student-primary .material-symbols-outlined {
+    font-size: 20px !important;
+}
+
+/* --- 3. DATA TABLES ARCHITECTURE PANEL --- */
+.table-section {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.table-header-panel {
+    padding: 24px;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-title-counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.table-title-counter h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.table-badge {
+    font-size: 10px;
+    font-weight: 700;
+    color: #6b7280;
+    background-color: #f3f4f6;
+    padding: 2px 10px;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Kunci layout engine tabel agar padat */
+.data-table-admin {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.data-table-admin th {
+    background-color: #f9fafb;
+    color: #9ca3af;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.data-table-admin td {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.data-table-admin tbody tr:hover {
+    background-color: rgba(249, 250, 251, 0.6);
+}
+
+.row-zebra {
+    background-color: rgba(247, 246, 245, 0.25);
+}
+
+/* --- 4. ENGINE CRUDBUTTON INTERACTIVE ACTION --- */
+.action-buttons-flex {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-table-action {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 8px;
+    color: #9ca3af;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-edit:hover   { color: #5B5000; background-color: rgba(237, 210, 0, 0.1); }
+.btn-delete:hover { color: #FF5656; background-color: rgba(255, 86, 86, 0.1); }
+.btn-table-action .material-symbols-outlined { font-size: 20px !important; }
+
+/* --- 5. POP-UP MODAL FORM ENGINEERING SYSTEM --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.modal-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 448px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hidden { display: none !important; }
+.opacity-0 { opacity: 0; }
+.scale-95 { transform: scale(0.95); }
+.scale-100 { transform: scale(100%); }
+
+.modal-header {
+    background-color: #EDD200;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #5B5000;
+    margin: 0;
+}
+
+.btn-close-modal {
+    background: none;
+    border: none;
+    color: #5B5000;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.btn-close-modal:hover { background-color: rgba(91, 80, 0, 0.1); }
+
+.modal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.space-y-modal-form > .form-group-modal + .form-group-modal,
+.space-y-modal-form > .form-group-modal + .modal-action-box {
+    margin-top: 18px;
+}
+
+.form-group-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-control {
+    width: 100%;
+    background-color: #F7F6F5;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #1f2937;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.modal-control:focus {
+    border-color: #EDD200;
+    background-color: #ffffff;
+}
+
+/* Modifikasi Khusus Prefix Input Kode Negara (+62) WhatsApp */
+.modal-input-icon-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.modal-input-prefix {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    pointer-events: none;
+}
+
+.modal-input-with-prefix {
+    padding-left: 54px;
+}
+
+/* Blok Tombol Manajemen di Bawah Form Modal */
+.modal-action-box {
+    display: flex;
+    gap: 12px;
+    padding-top: 12px;
+}
+
+.btn-modal-cancel, .btn-modal-submit {
+    flex: 1;
+    border: none;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-modal-cancel { background-color: #ffffff; border: 1px solid #e5e7eb; color: #6b7280; }
+.btn-modal-cancel:hover { background-color: #f9fafb; }
+
+.btn-modal-submit { background-color: #EDD200; color: #5B5000; }
+.btn-modal-submit:hover { box-shadow: 0 4px 12px rgba(237, 210, 0, 0.2); }
+.btn-modal-submit:active { transform: scale(0.98); }
+
+/* --- 6. ADAPTIF MEDIA SMARTPHONE QUERIES --- */
+@media (max-width: 640px) {
+    .content-header-split {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .btn-add-student-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}

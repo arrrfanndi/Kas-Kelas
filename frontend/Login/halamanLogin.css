@@ -1,0 +1,102 @@
+
+        /* 1. Reset Global & Atur Font */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* 2. Kunci Utama Untuk Membuat Konten di Tengah Halaman */
+        body {
+            background-color: #F7F6F5; /* Warna dasar abu-abu soft khas dashboard */
+            display: flex;
+            justify-content: center; /* Tengah horizontal */
+            align-items: center;     /* Tengah vertikal */
+            min-height: 100vh;       /* Mengikuti tinggi penuh layar HP/Laptop */
+            padding: 20px;
+        }
+
+        /* 3. Desain Kotak (Card) Login */
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 400px; /* Ukuran ideal lebar form login */
+            padding: 40px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04); /* Shadow tipis agar elegan */
+        }
+
+        /* 4. Desain Teks Penyambut */
+        .teks_sapa {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .teks_sapa h1 {
+            color: #5B5000; /* Warna biru utama (brand Kasku) */
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .teks_sapa h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 8px;
+        }
+
+        .teks_sapa p {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        /* 5. Desain Form Input */
+        .input_username, .input_password {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #495057;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 14px;
+            border: 1px solid #ced4da;
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+            color: #212529;
+        }
+
+        /* Efek saat form input diklik */
+        input:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+        }
+
+        /* 6. Desain Tombol Submit */
+        #tombol_login {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #EDD200;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        #tombol_login:hover {
+            background-color: #B9A300; /* Warna sedikit gelap saat kursor menempel */
+        }

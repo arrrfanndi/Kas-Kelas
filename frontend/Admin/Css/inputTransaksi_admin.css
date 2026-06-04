@@ -1,0 +1,345 @@
+/* ==========================================================================
+   input_transaksi.css
+   Pusat Kendali Desain Halaman Input Kas & Transaksi - Kasqeu
+   ========================================================================== */
+
+/* --- 1. SETELAN RUTIN & TATA LETAK UTAMA --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7F6F5;
+    color: #1e1c10;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 90px auto 0 auto;
+    padding: 0 24px 48px 24px;
+}
+
+.content-header {
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.content-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 4px;
+}
+
+.content-header p {
+    font-size: 15px;
+    color: #6c757d;
+}
+
+/* --- 2. GRID SYSTEM BENTO BOX LAYOUT --- */
+.input-grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+    align-items: start;
+}
+
+.form-card-main {
+    grid-column: span 8;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+
+.sidebar-layout {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* --- 3. DUAL INTERACTIVE TABS VIEW --- */
+.form-tabs-header {
+    display: flex;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6c757d;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease-in-out;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+    color: #5B5000;
+}
+
+.tab-btn.active-tab {
+    border-bottom: 2px solid #EDD200;
+    color: #5B5000;
+    font-weight: 600;
+    background-color: #ffffff;
+}
+
+.tab-btn .material-symbols-outlined {
+    font-size: 20px !important;
+}
+
+.form-wrapper-padding {
+    padding: 32px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- 4. ARSITEKTUR FORM & INPUT CONTROLS --- */
+.space-y-form > .form-group + .form-group,
+.space-y-form > .form-row-twin + .form-group,
+.space-y-form > .form-group + .form-action-btn-box {
+    margin-top: 24px;
+}
+
+.form-row-twin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Base Form Control */
+.form-control {
+    width: 100%;
+    background-color: rgba(247, 246, 245, 0.6);
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #212529;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #EDD200;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px #EDD200;
+}
+
+/* Dropdown Select Option Custom */
+.form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236c757d'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    appearance: none;
+    padding-right: 40px;
+}
+
+/* Input Nominal Prefix Wrapper ("Rp") */
+.input-icon-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-prefix {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.form-input-with-prefix {
+    padding-left: 44px;
+}
+
+.form-textarea {
+    resize: vertical;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Action Buttons Form Box */
+.form-action-btn-box {
+    padding-top: 16px;
+}
+
+.btn-submit-primary,
+.btn-submit-error {
+    width: 100%;
+    border: none;
+    padding: 16px 0;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s;
+}
+
+.btn-submit-primary { background-color: #EDD200; color: #5B5000; }
+.btn-submit-primary:hover { background-color: #e2c800; }
+
+.btn-submit-error { background-color: #FF5656; color: #ffffff; }
+.btn-submit-error:hover { opacity: 0.92; }
+
+.btn-submit-primary:active,
+.btn-submit-error:active {
+    transform: scale(0.99);
+}
+
+.btn-submit-primary .material-symbols-outlined,
+.btn-submit-error .material-symbols-outlined {
+    font-size: 20px !important;
+}
+
+/* --- 5. SIDEBAR COMPONENTS (GUIDELINES & AD CARD) --- */
+.guidelines-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+}
+
+.guidelines-title-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.guidelines-title-box h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #212529;
+}
+
+.guidelines-title-box .material-symbols-outlined {
+    color: #EDD200;
+}
+
+.guidelines-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.guideline-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.guideline-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.guideline-item p {
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.text-dark { color: #212529; }
+
+/* Visual Accent Banner Card */
+
+/* --- 6. TOAST NOTIFICATION COMPONENT --- */
+.toast-notification {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: #212529;
+    color: #ffffff;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 110;
+    transform: translateY(150px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toast-notification.show {
+    transform: translateY(0);
+}
+
+.toast-notification .material-symbols-outlined {
+    color: #EDD200;
+    font-size: 20px !important;
+}
+
+.toast-text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- 7. ADAPTIF MEDIA RESPONSIVE QUERY --- */
+@media (max-width: 1024px) {
+    .form-card-main { grid-column: span 12; }
+    .sidebar-layout { grid-column: span 12; }
+}
+
+@media (max-width: 576px) {
+    .form-row-twin { grid-template-columns: 1fr; gap: 24px; }
+    .form-wrapper-padding { padding: 24px 16px; }
+    .tab-btn { font-size: 13px; }
+    .toast-notification { left: 16px; right: 16px; bottom: 16px; justify-content: center; }
+}
