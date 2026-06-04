@@ -1,4 +1,4 @@
-# Kas-Kelas
+# Kaskeu
 Kasqeu adalah aplikasi manajemen keuangan kas kelas berbasis web yang dirancang untuk mempermudah bendahara kelas (Admin) dalam mengelola tagihan, pemasukan, dan pengeluaran kas, serta transparansi bagi Siswa untuk memantau riwayat setoran dan tunggakan secara real-time.
 
 ## Fitur Utama
