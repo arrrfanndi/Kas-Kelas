@@ -25,7 +25,7 @@ require_once '../../../Backend/User/Logic_user_riwayat.php'
                 <span class="logo">Kasqeu</span>
                 <nav class="nav-links">
                     <a href="user_dashboard.php">Dashboard</a>
-                    <a href="" class="active">Riwayat</a>
+                    <a href="user_riwayat.php" class="active">Riwayat</a>
                     <a href="user_tagihan.php">Tagihan</a>
                 </nav>
             </div>

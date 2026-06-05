@@ -23,7 +23,7 @@ require_once '../../../Backend/User/Logic_user_dashboard.php';
             <div class="nav-left">
                 <span class="logo">Kasqeu</span>
                 <nav class="nav-links">
-                    <a href="" class="active">Dashboard</a>
+                    <a href="user_dashboard.php" class="active">Dashboard</a>
                     <a href="user_riwayat.php">Riwayat</a>
                     <a href="user_tagihan.php">Tagihan</a>
                 </nav>

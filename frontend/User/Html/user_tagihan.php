@@ -28,7 +28,7 @@ require_once '../../../Backend/User/Logic_user_tagihan.php'
                 <nav class="nav-links">
                     <a href="user_dashboard.php">Dashboard</a>
                     <a href="user_riwayat.php">Riwayat</a>
-                    <a href="" class="active">Tagihan</a>
+                    <a href="user_tagihan.php" class="active">Tagihan</a>
                 </nav>
             </div>
             <div class="nav-right">
