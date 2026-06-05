@@ -8,11 +8,11 @@ require_once '../../../Backend/User/Logic_user_tagihan.php'
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kasqeu - Siswa - Tagihan</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../Css/user_dashboard.css">
@@ -46,14 +46,14 @@ require_once '../../../Backend/User/Logic_user_tagihan.php'
     </header>
 
     <main class="main-content">
-        
+
         <section class="welcome-section">
             <h1>Tagihan Kas Saya</h1>
             <p>Audit personal untuk melihat kewajiban kas mingguan Anda dan status pembayaran terkini.</p>
         </section>
 
         <div class="alert-status-container">
-            <div class="alert-status-card">
+            <div class="alert-status-card <?= $my_tagihan > 0 ? '' : 'card-lunas'; ?>">
                 <div class="alert-status-left">
                     <?php if ($my_tagihan > 0): ?>
                         <span class="material-symbols-outlined icon-alert">warning</span>
@@ -98,7 +98,7 @@ require_once '../../../Backend/User/Logic_user_tagihan.php'
                                 <td colspan="4" class="text-center" style="padding: 24px; color: #9ca3af;">Belum ada data tagihan iuran kas yang diatur.</td>
                             </tr>
                         <?php else: ?>
-                            <?php foreach ($list_tagihan as $row): 
+                            <?php foreach ($list_tagihan as $row):
                                 $tgl_format = ($row['deadline']) ? date('d M Y', strtotime($row['deadline'])) : '-';
                                 $is_lunas   = ($row['status'] === 'lunas');
                                 $badge_class = $is_lunas ? 'badge-success' : 'badge-error';

@@ -1,4 +1,3 @@
-
 /* 1. Komponen Status Alert Box (Gaya Besar Modifikasi) */
 .alert-status-container {
     margin-bottom: 32px;
@@ -14,6 +13,15 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(255, 86, 86, 0.15);
+}
+
+.alert-status-card.card-lunas {
+    background-color: #10b981;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.15);
+}
+
+.alert-status-card.card-lunas .btn-alert-action {
+    color: #10b981; 
 }
 
 .alert-status-left {

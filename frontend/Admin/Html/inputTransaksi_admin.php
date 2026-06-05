@@ -88,7 +88,7 @@ require_once '../../../Backend/Admin/Logic_inputTransaksi_admin.php';
                             <div class="form-row-twin">
                                 <div class="form-group">
                                     <label class="form-label">Nama Siswa</label>
-                                    <select class="form-control form-select" name="siswa_id" required>
+                                    <select class="form-control form-select" name="siswa_id" required onchange="filterMinggu()">
                                         <option value="">Pilih Siswa</option>
                                         <?php foreach ($list_siswa as $siswa): ?>
                                             <option value="<?= $siswa['id'] ?>"><?= htmlspecialchars($siswa['nama']) ?></option>
@@ -294,6 +294,8 @@ require_once '../../../Backend/Admin/Logic_inputTransaksi_admin.php';
             inputNominal.value = 0;
         }
     });
+
+    
 </script>
 
 </html>
