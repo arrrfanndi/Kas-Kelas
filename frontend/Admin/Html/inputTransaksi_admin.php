@@ -1,3 +1,7 @@
+<?php
+require_once '../../../Backend/Admin/Logic_inputTransaksi_admin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -35,11 +39,11 @@
             </div>
             <div class="nav-right">
                 <div class="user-info">
-                    <span class="user-name">Ruan Mei</span>
+                    <span class="user-name"><?= htmlspecialchars($nama) ?></span>
                     <span class="user-role">Admin</span>
                 </div>
-                <div class="avatar-box"></div>
-                <button class="btn-logout">
+                <div class="avatar-box"><?= $inisial ?></div>
+                <button class="btn-logout" onclick="window.location.href='/Config/logout.php'">
                     <span class="material-symbols-outlined">logout</span>
                     <span>Logout</span>
                 </button>
@@ -52,6 +56,17 @@
             <h1>Input Transaksi Baru</h1>
             <p>Catat pemasukan dan pengeluaran kas kita dengan akurat.</p>
         </section>
+
+        <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
+            <div style="background-color: rgba(16, 185, 129, 0.15); color: #10b981; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+                Transaksi berhasil disimpan ke dalam database!
+            </div>
+        <?php elseif (isset($_GET['status']) && $_GET['status'] == 'error'): ?>
+            <div style="background-color: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+                Gagal memproses transaksi. Silakan periksa kembali inputan Anda.
+            </div>
+        <?php endif; ?>
+
         <div class="input-grid-container">
 
             <section class="form-card-main">
@@ -69,26 +84,21 @@
                 <div class="form-wrapper-padding">
 
                     <div class="tab-content active" id="content-pemasukan">
-                        <form class="space-y-form">
+                        <form action="/config/proses_transaksi.php" method="POST" class="space-y-form">
                             <div class="form-row-twin">
                                 <div class="form-group">
                                     <label class="form-label">Nama Siswa</label>
-                                    <select class="form-control form-select">
+                                    <select class="form-control form-select" name="siswa_id" required>
                                         <option value="">Pilih Siswa</option>
-                                        <option value="1">Adit Pratama</option>
-                                        <option value="2">Budi Santoso</option>
-                                        <option value="3">Citra Lestari</option>
-                                        <option value="4">Dewi Anggraini</option>
-                                        <option value="5">Eko Wahyudi</option>
+                                        <?php foreach ($list_siswa as $siswa): ?>
+                                            <option value="<?= $siswa['id'] ?>"><?= htmlspecialchars($siswa['nama']) ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Minggu Ke</label>
-                                    <select class="form-control form-select" id="minggu-pilih">
-                                        <option value="1">Minggu 1</option>
-                                        <option value="2">Minggu 2</option>
-                                        <option value="3">Minggu 3</option>
-                                        <option value="4">Minggu 4</option>
+                                    <select class="form-control form-select" id="minggu-pilih" name="periode_kas_id" required disabled>
+                                        <option value="">Pilih Siswa Terlebih Dahulu</option>
                                     </select>
                                 </div>
                             </div>
@@ -97,19 +107,17 @@
                                 <label class="form-label">Nominal (Rp)</label>
                                 <div class="input-icon-wrapper">
                                     <span class="input-prefix">Rp</span>
-                                    <input class="form-control form-input-with-prefix" type="number" value="5000"
-                                        placeholder="5003">
+                                    <input class="form-control form-input-with-prefix" type="number" name="nominal" id="nominal-pemasukan" value="0" readonly required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Keterangan</label>
-                                <input class="form-control" id="ket-pemasukan" type="text" value="Bayar Kas Minggu 1"
-                                    placeholder="Contoh: Pembayaran Lunas">
+                                <input class="form-control" id="ket-pemasukan" type="text" name="keterangan" value="Bayar Kas" placeholder="Contoh: Pembayaran Lunas">
                             </div>
 
                             <div class="form-action-btn-box">
-                                <button class="btn-submit-primary" type="button">
+                                <button class="btn-submit-primary" type="submit" name="submit_pemasukan">
                                     <span class="material-symbols-outlined">save</span>
                                     <span>Simpan Pemasukan</span>
                                 </button>
@@ -118,29 +126,27 @@
                     </div>
 
                     <div class="tab-content" id="content-pengeluaran">
-                        <form class="space-y-form">
+                        <form action="/config/proses_transaksi.php" method="POST" class="space-y-form">
                             <div class="form-group">
-                                <label class="form-label">Nama Pengeluaran</label>
-                                <input class="form-control" type="text" placeholder="Contoh: Beli Sapu atau Kertas HVS">
+                                <label class="form-label">Nama Pengeluaran / Kategori</label>
+                                <input class="form-control" type="text" name="kategori" placeholder="Contoh: Beli Sapu atau Kertas HVS" required>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Nominal Pengeluaran (Rp)</label>
                                 <div class="input-icon-wrapper">
                                     <span class="input-prefix">Rp</span>
-                                    <input class="form-control form-input-with-prefix" type="number"
-                                        placeholder="Masukkan jumlah dana keluar">
+                                    <input class="form-control form-input-with-prefix" type="number" name="nominal" placeholder="Masukkan jumlah dana keluar" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Keterangan / Keperluan</label>
-                                <textarea class="form-control form-textarea" rows="4"
-                                    placeholder="Deskripsikan tujuan pengeluaran..."></textarea>
+                                <textarea class="form-control form-textarea" rows="4" name="keterangan" placeholder="Deskripsikan tujuan pengeluaran..." required></textarea>
                             </div>
 
                             <div class="form-action-btn-box">
-                                <button class="btn-submit-error" type="button">
+                                <button class="btn-submit-error" type="submit" name="submit_pengeluaran">
                                     <span class="material-symbols-outlined">upload_file</span>
                                     <span>Simpan Pengeluaran</span>
                                 </button>
@@ -160,7 +166,7 @@
                             <span class="card-tag">Per Hari Ini</span>
                         </div>
                         <p class="card-label">Total Saldo Kas</p>
-                        <h3 class="card-value">Rp 1.500.000</h3>
+                        <h3 class="card-value">Rp <?= number_format($saldo_kelas, 0, ',', '.') ?></h3>
 
                     </div>
                     <div class="guidelines-card">
@@ -184,8 +190,11 @@
                         </ul>
                     </div>
             </aside>
+        </div>
+    </main>
 </body>
 <script>
+    // 1. Fungsi bawaan untuk memindahkan tab Pemasukan / Pengeluaran
     function switchTab(type) {
         const tabPemasukan = document.getElementById('tab-pemasukan');
         const tabPengeluaran = document.getElementById('tab-pengeluaran');
@@ -205,20 +214,85 @@
         }
     }
 
-    document.getElementById('minggu-pilih').addEventListener('change', function (e) {
-        const val = e.target.value;
-        document.getElementById('ket-pemasukan').value = "Bayar Kas Minggu " + val;
+    // 2. Deklarasi elemen HTML yang dibutuhkan
+    const selectSiswa = document.querySelector('select[name="siswa_id"]');
+    const selectMinggu = document.getElementById('minggu-pilih');
+    const inputKeterangan = document.getElementById('ket-pemasukan');
+    const inputNominal = document.getElementById('nominal-pemasukan'); // Elemen input nominal readonly
+
+    // Variabel global untuk menyimpan data periode (termasuk nominalnya) sementara di browser
+    let dataPeriodeGlobal = [];
+
+    // 3. Event handler ketika admin memilih/mengubah Nama Siswa
+    selectSiswa.addEventListener('change', function() {
+        const siswaId = this.value;
+
+        // Reset dropdown minggu, keterangan, dan nominal ke kondisi awal (0)
+        selectMinggu.innerHTML = '<option value="">Pilih Minggu</option>';
+        inputKeterangan.value = "Bayar Kas";
+        inputNominal.value = 0;
+
+        // Jika admin memilih opsi kosong "-- Pilih Siswa --"
+        if (siswaId === "") {
+            selectMinggu.disabled = true;
+            selectMinggu.innerHTML = '<option value="">Pilih Siswa Terlebih Dahulu</option>';
+            return;
+        }
+
+        // Jalankan Fetch API (AJAX) ke backend untuk mengambil data minggu & nominal
+        fetch(`/config/get_minggu_tagihan.php?siswa_id=${siswaId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Sesi habis atau terjadi kesalahan.');
+                    return;
+                }
+
+                if (data.length === 0) {
+                    selectMinggu.disabled = true;
+                    selectMinggu.innerHTML = '<option value="">Siswa ini sudah melunasi semua minggu</option>';
+                } else {
+                    selectMinggu.disabled = false; // Aktifkan dropdown minggu jika ada tagihan
+                    selectMinggu.innerHTML = '<option value="">Pilih Minggu</option>';
+
+                    // SIMPAN DATA DARI DATABASE KE VARIABEL GLOBAL AGAR BISA DIBACA ELEMENT LAIN
+                    dataPeriodeGlobal = data;
+
+                    // Looping untuk memasukkan daftar minggu ke dalam dropdown
+                    data.forEach(periode => {
+                        const option = document.createElement('option');
+                        option.value = periode.id;
+                        option.textContent = `Minggu ${periode.minggu_ke} (${periode.bulan} ${periode.tahun})`;
+                        selectMinggu.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Gagal memuat data periode kas.');
+            });
     });
 
-    document.querySelectorAll('button[type="button"]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
+    // 4. Event handler ketika admin memilih Minggu Ke
+    selectMinggu.addEventListener('change', function(e) {
+        const periodeId = e.target.value;
+        const selectedText = e.target.options[e.target.selectedIndex].text;
 
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        });
+        if (periodeId !== "") {
+            // Otomatis isi kotak keterangan
+            inputKeterangan.value = "Bayar Kas " + selectedText;
+
+            // CARI DATA NOMINAL BERDASARKAN MINGGU YANG DIPILIH DARI VARIABEL GLOBAL
+            const kriteriaPeriode = dataPeriodeGlobal.find(p => p.id == periodeId);
+            if (kriteriaPeriode) {
+                // Otomatis ubah angka 0 menjadi nominal asli dari database (misal: 10000 atau 5000)
+                inputNominal.value = kriteriaPeriode.nominal;
+            }
+        } else {
+            // Kembalikan ke default jika opsi kosong dipilih kembali
+            inputKeterangan.value = "Bayar Kas";
+            inputNominal.value = 0;
+        }
     });
 </script>
 

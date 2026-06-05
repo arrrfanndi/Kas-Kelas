@@ -35,7 +35,7 @@ require_once '../../../Backend/User/Logic_user_riwayat.php'
                     <span class="user-role">Siswa</span>
                 </div>
                 <div class="avatar-box"><?= $inisial ?></div>
-                <button class="btn-logout" onclick="window.location.href='/Config/logout.php'">
+                <button class="btn-logout" onclick="window.location.href='/config/logout.php'">
                     <span class="material-symbols-outlined">logout</span>
                     <span>Logout</span>
                 </button>
@@ -51,7 +51,7 @@ require_once '../../../Backend/User/Logic_user_riwayat.php'
                 <p>Transparansi total untuk setiap rupiah yang dikelola. Pantau pemasukan dan pengeluaran kelas dengan detail dan akurat.</p>
             </div>
             <div class="header-action">
-                <a href="/Backend/User/cetak_riwayat.php?filter=<?= urlencode($filter) ?>&search=<?= urlencode($search) ?>" class="btn-download" target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                <a href="/Backend/User/cetak_riwayat.php?filter=<?= htmlspecialchars($filter) ?>" class="btn-download" target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
                     <span class="material-symbols-outlined">download</span>
                     <span>Unduh PDF</span>
                 </a>

@@ -1,3 +1,7 @@
+<?php
+require_once '../../../Backend/Admin/Logic_dashboard_admin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -8,11 +12,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../User/Css/user_dashboard.css">
     <link rel="stylesheet" href="../Css/dashboard_admin.css">
@@ -35,11 +37,11 @@
             </div>
             <div class="nav-right">
                 <div class="user-info">
-                    <span class="user-name">Ruan Mei</span>
+                    <span class="user-name"><?= htmlspecialchars($nama) ?></span>
                     <span class="user-role">Admin</span>
                 </div>
-                <div class="avatar-box"></div>
-                <button class="btn-logout">
+                <div class="avatar-box"><?= $inisial ?></div>
+                <button class="btn-logout" onclick="window.location.href='/config/logout.php'">
                     <span class="material-symbols-outlined">logout</span>
                     <span>Logout</span>
                 </button>
@@ -63,8 +65,7 @@
                     <span class="card-tag">Per Hari Ini</span>
                 </div>
                 <p class="card-label">Total Saldo Kas</p>
-                <h3 class="card-value">Rp 1.500.000</h3>
-
+                <h3 class="card-value">Rp <?= number_format($saldo_kelas, 0, ',', '.') ?></h3>
             </div>
 
             <div class="kpi-card border-green">
@@ -75,8 +76,7 @@
                     <span class="card-tag">Akumulatif</span>
                 </div>
                 <p class="card-label">Total Pemasukan Keseluruhan</p>
-                <h3 class="card-value">Rp 2.000.000</h3>
-
+                <h3 class="card-value">Rp <?= number_format($total_masuk, 0, ',', '.') ?></h3>
             </div>
 
             <div class="kpi-card border-red">
@@ -87,14 +87,14 @@
                     <span class="card-tag">Pengeluaran</span>
                 </div>
                 <p class="card-label">Total Pengeluaran Keseluruhan</p>
-                <h3 class="card-value text-red">Rp 500.000</h3>
+                <h3 class="card-value text-red">Rp <?= number_format($total_keluar, 0, ',', '.') ?></h3>
             </div>
         </div>
 
         <section class="table-section">
             <div class="table-header-panel">
                 <h4>Ringkasan Aktivitas Terakhir</h4>
-                <button class="btn-print-report">Cetak Laporan</button>
+                <button class="btn-print-report" onclick="window.location.href='/Backend/Admin/print_aktivitas.php'">Cetak Laporan</button>
             </div>
 
             <div class="table-responsive">
@@ -109,87 +109,52 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-muted">01</td>
-                            <td class="text-muted">12 Okt 2023</td>
-                            <td>
-                                <div class="row-title">Andi Saputra</div>
-                                <div class="row-subtitle">Iuran Wajib Minggu 2</div>
-                            </td>
-                            <td>
-                                <span class="badge-row badge-row-success">
-                                    <span class="material-symbols-outlined">arrow_downward</span> Masuk
-                                </span>
-                            </td>
-                            <td class="text-right-align text-green font-bold">Rp 20.000</td>
-                        </tr>
-                        <tr>
-                            <td class="text-muted">02</td>
-                            <td class="text-muted">12 Okt 2023</td>
-                            <td>
-                                <div class="row-title">Toko Fotocopy "Jaya"</div>
-                                <div class="row-subtitle">Cetak Modul Kalkulus</div>
-                            </td>
-                            <td>
-                                <span class="badge-row badge-row-error">
-                                    <span class="material-symbols-outlined">arrow_upward</span> Keluar
-                                </span>
-                            </td>
-                            <td class="text-right-align text-red font-bold">Rp 150.000</td>
-                        </tr>
-                        <tr>
-                            <td class="text-muted">03</td>
-                            <td class="text-muted">11 Okt 2023</td>
-                            <td>
-                                <div class="row-title">Siti Aminah</div>
-                                <div class="row-subtitle">Pelunasan Denda</div>
-                            </td>
-                            <td>
-                                <span class="badge-row badge-row-success">
-                                    <span class="material-symbols-outlined">arrow_downward</span> Masuk
-                                </span>
-                            </td>
-                            <td class="text-right-align text-green font-bold">Rp 5.000</td>
-                        </tr>
-                        <tr>
-                            <td class="text-muted">04</td>
-                            <td class="text-muted">10 Okt 2023</td>
-                            <td>
-                                <div class="row-title">Donasi Sosial</div>
-                                <div class="row-subtitle">Panti Asuhan</div>
-                            </td>
-                            <td>
-                                <span class="badge-row badge-row-error">
-                                    <span class="material-symbols-outlined">arrow_upward</span> Keluar
-                                </span>
-                            </td>
-                            <td class="text-right-align text-red font-bold">Rp 200.000</td>
-                        </tr>
-                        <tr>
-                            <td class="text-muted">05</td>
-                            <td class="text-muted">10 Okt 2023</td>
-                            <td>
-                                <div class="row-title">Budi Darmawan</div>
-                                <div class="row-subtitle">Iuran Wajib Minggu 2</div>
-                            </td>
-                            <td>
-                                <span class="badge-row badge-row-success">
-                                    <span class="material-symbols-outlined">arrow_downward</span> Masuk
-                                </span>
-                            </td>
-                            <td class="text-right-align text-green font-bold">Rp 20.000</td>
-                        </tr>
+                        <?php if (empty($list_aktivitas)): ?>
+                            <tr>
+                                <td colspan="5" class="text-center" style="padding: 24px; color: #9ca3af;">Belum ada riwayat transaksi keuangan masuk atau keluar.</td>
+                            </tr>
+                        <?php else: ?>
+                            <?php 
+                            $no = 1;
+                            foreach ($list_aktivitas as $row): 
+                                $tgl_format = ($row['tanggal']) ? date('d M Y', strtotime($row['tanggal'])) : '-';
+                                $is_masuk   = ($row['jenis'] === 'masuk');
+                                
+                                // Menyesuaikan kelas badge & font warna sesuai bawaan template iuran/pengeluaran
+                                $badge_class = $is_masuk ? 'badge-row badge-row-success' : 'badge-row badge-row-error';
+                                $icon_badge  = $is_masuk ? 'arrow_downward' : 'arrow_upward';
+                                $text_badge  = $is_masuk ? 'Masuk' : 'Keluar';
+                                $color_class = $is_masuk ? 'text-green' : 'text-red';
+                            ?>
+                                <tr>
+                                    <td class="text-muted"><?= str_pad($no++, 2, '0', STR_PAD_LEFT) ?></td>
+                                    <td class="text-muted"><?= $tgl_format ?></td>
+                                    <td>
+                                        <div class="row-title"><?= htmlspecialchars($row['judul']) ?></div>
+                                        <div class="row-subtitle"><?= htmlspecialchars($row['sub_judul']) ?></div>
+                                    </td>
+                                    <td>
+                                        <span class="<?= $badge_class ?>">
+                                            <span class="material-symbols-outlined"><?= $icon_badge ?></span> <?= $text_badge ?>
+                                        </span>
+                                    </td>
+                                    <td class="text-right-align <?= $color_class ?> font-bold">
+                                        Rp <?= number_format($row['nominal'], 0, ',', '.') ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
 
             <div class="table-footer-panel">
-                <span class="text-counter">Menampilkan 5 dari 124 transaksi</span>
+                <span class="text-counter">Menampilkan <?= count($list_aktivitas) ?> dari 5 transaksi terbaru</span>
                 <div class="pagination-arrows">
                     <button class="btn-arrow-nav disabled">
                         <span class="material-symbols-outlined">chevron_left</span>
                     </button>
-                    <button class="btn-arrow-nav">
+                    <button class="btn-arrow-nav" onclick="window.location.href='riwayat_admin.php'">
                         <span class="material-symbols-outlined">chevron_right</span>
                     </button>
                 </div>
@@ -198,22 +163,22 @@
 
         <div class="bottom-split-grid">
             <div class="split-card card-alignment-center">
-                <h4 class="split-card-title">Status Kelunasan</h4>
+                <h4 class="split-card-title">Status Kelunasan (Minggu <?= $minggu_ke_text ?>)</h4>
 
                 <div class="circular-progress">
                     <svg class="progress-svg">
                         <circle class="circle-track" cx="60" cy="60" r="50"></circle>
                         <circle class="circle-bar" cx="60" cy="60" r="50" stroke-dasharray="314.159"
-                            stroke-dashoffset="62.831"></circle>
+                            stroke-dashoffset="<?= $dashoffset ?>"></circle>
                     </svg>
                     <div class="progress-inner-text">
-                        <span class="percentage">80%</span>
+                        <span class="percentage"><?= $pct_lunas ?>%</span>
                         <span class="sub-tag">Selesai</span>
                     </div>
                 </div>
 
                 <p class="progress-desc-text">
-                    <strong>32 dari 40</strong> mahasiswa telah melunasi iuran wajib minggu ini.
+                    <strong><?= $total_lunas_minggu_ini ?> dari <?= $total_aktif ?></strong> mahasiswa telah melunasi iuran wajib minggu ini.
                 </p>
 
                 <div class="legend-container">
@@ -229,43 +194,36 @@
             <div class="split-card">
                 <div class="split-card-header">
                     <h4 class="split-card-title">Daftar Penunggak Teratas</h4>
-                    <button class="btn-link-viewall">
+                    <button class="btn-link-viewall" onclick="window.location.href='tagihan_admin.php'">
                         <span>Lihat Semua</span>
                         <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
 
                 <div class="debtors-list-wrapper">
-                    <div class="debtor-list-item">
-                        <div class="debtor-profile">
-                            <div class="debtor-initials">AP</div>
-                            <div>
-                                <h5 class="debtor-name">Aditya Pratama</h5>
-                                <p class="debtor-weeks">Minggu 3, 4</p>
+                    <?php if (empty($list_debtors)): ?>
+                        <p class="text-muted text-center" style="padding-top: 40px;">Hebat! Seluruh mahasiswa telah melunasi kas kelas.</p>
+                    <?php else: ?>
+                        <?php foreach ($list_debtors as $debtor): 
+                            // Membuat inisial profil mahasiswa penunggak secara dinamis
+                            $d_kata = explode(' ', $debtor['nama']);
+                            $d_init = strtoupper(substr($d_kata[0], 0, 1));
+                            if (isset($d_kata[1])) {
+                                $d_init .= strtoupper(substr($d_kata[1], 0, 1));
+                            }
+                        ?>
+                            <div class="debtor-list-item">
+                                <div class="debtor-profile">
+                                    <div class="debtor-initials"><?= $d_init ?></div>
+                                    <div>
+                                        <h5 class="debtor-name"><?= htmlspecialchars($debtor['nama']) ?></h5>
+                                        <p class="debtor-weeks">Minggu <?= htmlspecialchars($debtor['minggu_tunggakan']) ?></p>
+                                    </div>
+                                </div>
+                                <span class="debtor-amount text-red">Rp <?= number_format($debtor['total_tunggakan'], 0, ',', '.') ?></span>
                             </div>
-                        </div>
-                        <span class="debtor-amount text-red">Rp 50.000</span>
-                    </div>
-                    <div class="debtor-list-item">
-                        <div class="debtor-profile">
-                            <div class="debtor-initials">BS</div>
-                            <div>
-                                <h5 class="debtor-name">Budi Santoso</h5>
-                                <p class="debtor-weeks">Minggu 4</p>
-                            </div>
-                        </div>
-                        <span class="debtor-amount text-red">Rp 50.000</span>
-                    </div>
-                    <div class="debtor-list-item">
-                        <div class="debtor-profile">
-                            <div class="debtor-initials">CL</div>
-                            <div>
-                                <h5 class="debtor-name">Citra Lestari</h5>
-                                <p class="debtor-weeks">Minggu 2, 3, 4</p>
-                            </div>
-                        </div>
-                        <span class="debtor-amount text-red">Rp 100.000</span>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

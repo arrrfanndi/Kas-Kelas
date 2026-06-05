@@ -129,7 +129,7 @@ require_once '../../../Backend/User/Logic_user_tagihan.php'
                     <span class="material-symbols-outlined">chat_bubble</span>
                     <span>Tanya Bendahara</span>
                 </button>
-                <button class="btn-support-outline" onclick="window.location.href='cetak_tagihan_pdf.php'">
+                <button class="btn-support-outline" onclick="window.location.href='/Backend/User/cetak_tagihan.php'">
                     <span class="material-symbols-outlined">description</span>
                     <span>Unduh Rekap PDF</span>
                 </button>
