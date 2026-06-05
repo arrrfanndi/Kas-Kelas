@@ -3,26 +3,7 @@ session_start();
 
 // 1. GERBANG KEAMANAN: Jika belum login atau bukan siswa, usir kembali ke login
 // (Perbaikan: Jalur diubah menjadi relatif menggunakan ../)
-if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'siswa') {
-    header("Location: /Login/login_dua.php");
-    exit;
-}
-
-// 2. KONEKSI DATABASE: Diubah menjadi relatif agar membaca folder Config di dalam project
-require_once '../Config/koneksi.php'; 
-
-$siswa_id = $_SESSION['user_id'];
-$nama     = $_SESSION['nama'];
-
-// Logika Pembuatan Inisial Nama untuk Avatar Box
-$kata    = explode(' ', $nama);
-$inisial = strtoupper(substr($kata[0], 0, 1));
-if (isset($kata[1])) {
-    $inisial .= strtoupper(substr($kata[1], 0, 1));
-}
-
-// Ambil Nama Panggilan (Kata pertama dari nama lengkap)
-$nama_panggilan = htmlspecialchars($kata[0]);
+require_once '../../../config/auth_siswa.php';
 
 try {
     // ------------------------------------------------------------------

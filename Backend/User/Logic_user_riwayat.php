@@ -2,25 +2,8 @@
 session_start();
 
 // =========================================================================
-// GERBANG KEAMANAN: Memastikan hanya siswa aktif yang bisa mengakses
-// =========================================================================
-if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'siswa') {
-    header("Location: /Login/login_dua.php");
-    exit;
-}
+require_once '../../../config/auth_siswa.php';
 
-// Koneksi ke database
-require_once '../Config/koneksi.php'; 
-
-$siswa_id = $_SESSION['user_id'];
-$nama     = $_SESSION['nama'];
-
-// Logika Pembuatan Inisial Nama untuk Avatar Box
-$kata    = explode(' ', $nama);
-$inisial = strtoupper(substr($kata[0], 0, 1));
-if (isset($kata[1])) {
-    $inisial .= strtoupper(substr($kata[1], 0, 1));
-}
 
 // =========================================================================
 // KOMPONEN B & D: Menangkap Parameter GET untuk Filter, Search, & Pagination
