@@ -17,5 +17,4 @@ Kasqeu adalah aplikasi manajemen keuangan kas kelas berbasis web yang dirancang 
 * **Back-End:** PHP Native (menggunakan driver **PDO** untuk koneksi database yang aman).
 * **Front-End:** HTML5, CSS3 (Custom Layout & Responsive Design), Google Material Symbols.
 * **Database:** MySQL / MariaDB.
-* **Interaktivitas:** Vanilla JavaScript dengan **Fetch API (AJAX)** untuk pemrosesan data real-time tanpa reload halaman.
 * **Environment:** Laragon / XAMPP.
