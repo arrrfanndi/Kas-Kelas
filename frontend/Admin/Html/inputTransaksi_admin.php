@@ -30,7 +30,7 @@ require_once '../../../Backend/Admin/Logic_inputTransaksi_admin.php';
                 <span class="logo">Kasqeu</span>
                 <nav class="nav-links">
                     <a href="dashboard_admin.php">Dashboard</a>
-                    <a href="#" class="active">Input Transaksi</a>
+                    <a href="inputTransaksi_admin.php" class="active">Input Transaksi</a>
                     <a href="riwayat_admin.php">Riwayat</a>
                     <a href="tagihan_admin.php">Tagihan</a>
                     <a href="pengaturan_admin.php">Pengaturan</a>

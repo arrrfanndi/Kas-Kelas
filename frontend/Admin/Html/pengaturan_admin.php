@@ -28,7 +28,7 @@ require_once '../../../Backend/Admin/Logic_pengaturan_admin.php';
                     <a href="inputTransaksi_admin.php">Input Transaksi</a>
                     <a href="riwayat_admin.php">Riwayat</a>
                     <a href="tagihan_admin.php">Tagihan</a>
-                    <a href="#" class="active">Pengaturan</a>
+                    <a href="pengaturan_admin.php" class="active">Pengaturan</a>
                     <a href="role_admin.php">Role</a>
                 </nav>
             </div>

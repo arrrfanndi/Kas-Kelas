@@ -27,7 +27,7 @@ require_once '../../../Backend/Admin/Logic_dashboard_admin.php';
             <div class="nav-left">
                 <span class="logo">Kasqeu</span>
                 <nav class="nav-links">
-                    <a href="#" class="active">Dashboard</a>
+                    <a href="dashboard_admin.php" class="active">Dashboard</a>
                     <a href="inputTransaksi_admin.php">Input Transaksi</a>
                     <a href="riwayat_admin.php">Riwayat</a>
                     <a href="tagihan_admin.php">Tagihan</a>
