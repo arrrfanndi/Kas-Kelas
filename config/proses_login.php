@@ -4,7 +4,7 @@ require_once  'koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $password = trim($_POST['password']); // Password mentah yang diketik di form login
 
     try {
         // CEK ADMIN
@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $admin = $stmt_admin->fetch(PDO::FETCH_ASSOC);
 
         if ($admin) {
-            if ($password == $admin['password']) {
+            // UBAH DI SINI: Gunakan password_verify() untuk mencocokkan hash
+            if (password_verify($password, $admin['password'])) {
                 $_SESSION['login']   = true;
                 $_SESSION['user_id'] = $admin['id'];
                 $_SESSION['nama']    = $admin['nama'];
@@ -30,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $siswa = $stmt_siswa->fetch(PDO::FETCH_ASSOC);
 
         if ($siswa) {
-            if ($password == $siswa['password']) {
+            // UBAH DI SINI: Gunakan password_verify() untuk mencocokkan hash
+            if (password_verify($password, $siswa['password'])) {
                 $_SESSION['login']   = true;
                 $_SESSION['user_id'] = $siswa['id'];
                 $_SESSION['nama']    = $siswa['nama'];
@@ -47,9 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 window.location.href = '/Login/halamanLogin.php';
               </script>";
     } catch (PDOException $e) {
-        die("Terjadi kesalahan sistem: " . $e->getMessage());
+        die("Error: " . $e->getMessage());
     }
-} else {
-    header("Location: frontend/Login/halamanLogin.php");
-    exit;
 }
