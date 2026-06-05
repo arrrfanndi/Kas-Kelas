@@ -1,5 +1,5 @@
 <?php
-// Config/auth_admin.php
+// config/auth_admin.php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -10,11 +10,13 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
-// 2. Hubungkan Koneksi Database (Karena satu folder di Config, langsung panggil nama filenya)
+// 2. Hubungkan Koneksi Database
 require_once 'koneksi.php'; 
 
-$admin_id = $_SESSION['user_id'];
-$nama     = $_SESSION['nama'];
+$admin_id = $_SESSION['user_id'] ?? null;
+$nama     = $_SESSION['nama'] ?? 'Admin';
+// Tambahkan baris ini agar $role terdefinisi (menggunakan ucfirst agar huruf depan Kapital)
+$role     = ucfirst($_SESSION['role'] ?? 'Admin'); 
 
 // 3. Logika Pembuatan Inisial Nama Global
 $kata    = explode(' ', $nama);
